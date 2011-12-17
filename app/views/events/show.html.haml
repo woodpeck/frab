@@ -48,6 +48,10 @@
       %p
         %b Average audience feedback:
         = number_with_precision @event.average_feedback, :precision => 1
+      - if not @event.ticket.nil?
+        %p
+          %b Ticket
+          = get_ticket_url( @event.ticket.remote_ticket_id )
     .span6
       %h2 Scheduling
       %p
