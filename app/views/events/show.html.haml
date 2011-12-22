@@ -24,6 +24,8 @@
     .span16
       - @event.conflicts.each do |conflict|
         = render "conflicts/#{conflict.conflict_type}", :conflict => conflict
+      %span.right
+        = image_box @event.logo, :large
   .row
     .span6
       %h2 Basic Information
@@ -37,21 +39,33 @@
         %b Event type:
         = @event.event_type
       %p
+        %b Time slots:
+        = format_time_slots @event.time_slots
+      %p
         %b State:
         = @event.state
       %p
         %b Language:
         = @event.language
       %p
+        %b Start time:
+        = @event.start_time
+      %p
+        %b Abstract:
+        = @event.abstract
+      %p
+        %b Description:
+        = @event.description
+      %p
         %b Public:
         = @event.public
       %p
         %b Average audience feedback:
         = number_with_precision @event.average_feedback, :precision => 1
-      - if not @event.ticket.nil?
+      - unless @event.ticket.nil? or @event.ticket.remote_ticket_id.empty?
         %p
-          %b Ticket
-          = get_ticket_url( @event.ticket.remote_ticket_id )
+          %b Ticket:
+          = link_to @event.ticket.remote_ticket_id, get_ticket_view_url( @event.ticket.remote_ticket_id ), :target => "_blank"
     .span6
       %h2 Scheduling
       %p
