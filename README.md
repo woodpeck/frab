@@ -4,6 +4,8 @@ frab is a web-based conference planning and management system.
 It helps to collect submissions, to manage talks and speakers
 and to create a schedule.
 
+This particular branch has some changes made for the SOTM-EU conference.
+
 ## Background
 
 frab was originally created for the organization of FrOSCon 2011 (http://www.froscon.de).
